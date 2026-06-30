@@ -8,6 +8,7 @@ import { TasksScreen } from "./screens/tasks-screen"
 import { FinanceScreen } from "./screens/finance-screen"
 import { NutritionScreen } from "./screens/nutrition-screen"
 import { FitScreen } from "./screens/fit-screen"
+import { RemodelScreen } from "./screens/remodel-screen"
 
 type View = TabKey
 
@@ -51,6 +52,7 @@ export function AppShell() {
             {view === "money" && <FinanceScreen />}
             {view === "fuel" && <NutritionScreen />}
             {view === "train" && <FitScreen />}
+            {view === "remodel" && <RemodelScreen />}
           </div>
 
           <BottomNav active={tab} onChange={goTab} />

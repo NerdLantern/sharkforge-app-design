@@ -176,6 +176,13 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+.sf-scroll-x::-webkit-scrollbar {
+  display: none;
+}
+.sf-scroll-x {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 
 @keyframes sf-sheet-in {
   from {
@@ -243,12 +250,98 @@
 .sf-animate-expand {
   animation: sf-expand 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+/* OCR receipt scanning animation */
+@keyframes sf-scanline {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+@keyframes sf-scan-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes sf-shimmer {
+  0% {
+    background-position: -150% 0;
+  }
+  100% {
+    background-position: 250% 0;
+  }
+}
+@keyframes sf-line-fill {
+  from {
+    width: 0%;
+    opacity: 0.2;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes sf-grid-drift {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 22px;
+  }
+}
+.sf-scanline {
+  animation: sf-scanline 1.7s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+.sf-scan-pulse {
+  animation: sf-scan-pulse 1.6s ease-in-out infinite;
+}
+.sf-shimmer {
+  background: linear-gradient(
+    100deg,
+    transparent 20%,
+    oklch(0.82 0.115 212 / 18%) 45%,
+    oklch(0.82 0.115 212 / 28%) 50%,
+    transparent 80%
+  );
+  background-size: 200% 100%;
+  animation: sf-shimmer 1.8s linear infinite;
+}
+.sf-scan-grid {
+  background-image:
+    linear-gradient(oklch(0.82 0.115 212 / 9%) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.82 0.115 212 / 9%) 1px, transparent 1px);
+  background-size: 22px 22px;
+  animation: sf-grid-drift 1.6s linear infinite;
+}
+.sf-line-fill {
+  animation: sf-line-fill 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .sf-animate-sheet,
   .sf-animate-fade,
   .sf-animate-rise,
   .sf-animate-pop,
-  .sf-animate-expand {
+  .sf-animate-expand,
+  .sf-scanline,
+  .sf-scan-pulse,
+  .sf-shimmer,
+  .sf-scan-grid,
+  .sf-line-fill {
     animation: none !important;
   }
 }
