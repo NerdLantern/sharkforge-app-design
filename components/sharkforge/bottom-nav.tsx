@@ -1,15 +1,17 @@
 "use client"
 
-import { LayoutGrid, Dumbbell, UtensilsCrossed, Wallet } from "lucide-react"
+import { LayoutGrid, CheckCircle2, Dumbbell, UtensilsCrossed, Wallet, Hammer } from "lucide-react"
 import { cn } from "@/lib/utils"
 
-export type TabKey = "home" | "train" | "fuel" | "money"
+export type TabKey = "home" | "tasks" | "train" | "fuel" | "money" | "remodel"
 
 const TABS: { key: TabKey; label: string; icon: typeof LayoutGrid }[] = [
-  { key: "home", label: "Home", icon: LayoutGrid },
-  { key: "train", label: "Train", icon: Dumbbell },
+  { key: "home", label: "Dash", icon: LayoutGrid },
+  { key: "tasks", label: "Tasks", icon: CheckCircle2 },
+  { key: "train", label: "Fit", icon: Dumbbell },
   { key: "fuel", label: "Fuel", icon: UtensilsCrossed },
   { key: "money", label: "Money", icon: Wallet },
+  { key: "remodel", label: "Remodel", icon: Hammer },
 ]
 
 export function BottomNav({ active, onChange }: { active: TabKey; onChange: (t: TabKey) => void }) {

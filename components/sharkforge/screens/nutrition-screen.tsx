@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Plus, Coffee, Sun, Moon, Sparkles } from "lucide-react"
 import { Eyebrow, GlassCard, ListRow, IconTile, SectionHeader, ProgressRing, EmptyState } from "../ui-kit"
 import { MealEditSheet } from "../sheets/meal-edit-sheet"
+import { MealLogSheet } from "../sheets/meal-log-sheet"
 
 const MACROS = [
   { key: "Protein", color: "oklch(0.82 0.115 212)", now: 142, goal: 180 },
@@ -13,6 +14,13 @@ const MACROS = [
 
 export function NutritionScreen() {
   const [editOpen, setEditOpen] = useState(false)
+  const [logOpen, setLogOpen] = useState(false)
+  const [logMeal, setLogMeal] = useState("Breakfast")
+
+  const openLog = (meal: string) => {
+    setLogMeal(meal)
+    setLogOpen(true)
+  }
 
   return (
     <>
@@ -24,7 +32,8 @@ export function NutritionScreen() {
           </div>
           <button
             type="button"
-            onClick={() => setEditOpen(true)}
+            onClick={() => openLog("Breakfast")}
+            aria-label="Log meal"
             className="flex size-10 items-center justify-center rounded-full bg-primary text-primary-foreground active:scale-95"
           >
             <Plus className="size-5" strokeWidth={2.5} />
@@ -101,13 +110,14 @@ export function NutritionScreen() {
               title="No dinner logged"
               description="Add a meal or let SharkForge suggest one within your remaining 760 kcal."
               action="Add dinner"
-              onAction={() => setEditOpen(true)}
+              onAction={() => openLog("Dinner")}
             />
           </GlassCard>
         </section>
       </div>
 
       <MealEditSheet open={editOpen} onClose={() => setEditOpen(false)} />
+      <MealLogSheet open={logOpen} onClose={() => setLogOpen(false)} meal={logMeal} />
     </>
   )
 }
