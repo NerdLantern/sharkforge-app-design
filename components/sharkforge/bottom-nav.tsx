@@ -8,7 +8,7 @@ export type TabKey = "home" | "tasks" | "train" | "fuel" | "money"
 const TABS: { key: TabKey; label: string; icon: typeof LayoutGrid }[] = [
   { key: "home", label: "Home", icon: LayoutGrid },
   { key: "tasks", label: "Tasks", icon: CheckCircle2 },
-  { key: "train", label: "Train", icon: Dumbbell },
+  { key: "train", label: "Fit", icon: Dumbbell },
   { key: "fuel", label: "Fuel", icon: UtensilsCrossed },
   { key: "money", label: "Money", icon: Wallet },
 ]

@@ -7,9 +7,9 @@ import { DashboardScreen } from "./screens/dashboard-screen"
 import { TasksScreen } from "./screens/tasks-screen"
 import { FinanceScreen } from "./screens/finance-screen"
 import { NutritionScreen } from "./screens/nutrition-screen"
-import { ExerciseScreen } from "./screens/exercise-screen"
+import { FitScreen } from "./screens/fit-screen"
 
-type View = TabKey | "exercise"
+type View = TabKey
 
 function StatusBar() {
   return (
@@ -46,12 +46,11 @@ export function AppShell() {
 
           {/* Scrollable content */}
           <div className="sf-scroll relative flex-1 overflow-y-auto">
-            {view === "home" && <DashboardScreen onOpenExercise={() => setView("exercise")} />}
+            {view === "home" && <DashboardScreen onOpenExercise={() => goTab("train")} />}
             {view === "tasks" && <TasksScreen />}
             {view === "money" && <FinanceScreen />}
             {view === "fuel" && <NutritionScreen />}
-            {view === "train" && <ExerciseScreen onBack={() => goTab("home")} />}
-            {view === "exercise" && <ExerciseScreen onBack={() => setView("home")} />}
+            {view === "train" && <FitScreen />}
           </div>
 
           <BottomNav active={tab} onChange={goTab} />
