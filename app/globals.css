@@ -199,3 +199,56 @@
 .sf-animate-fade {
   animation: sf-fade-in 0.3s ease-out;
 }
+
+@keyframes sf-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes sf-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  60% {
+    transform: scale(1.12);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes sf-expand {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Fluid content reveal for switching tabs */
+.sf-animate-rise {
+  animation: sf-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.sf-animate-pop {
+  animation: sf-pop 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.sf-animate-expand {
+  animation: sf-expand 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sf-animate-sheet,
+  .sf-animate-fade,
+  .sf-animate-rise,
+  .sf-animate-pop,
+  .sf-animate-expand {
+    animation: none !important;
+  }
+}

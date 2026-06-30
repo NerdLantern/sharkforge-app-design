@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Signal, Wifi, BatteryFull } from "lucide-react"
 import { BottomNav, type TabKey } from "./bottom-nav"
 import { DashboardScreen } from "./screens/dashboard-screen"
+import { TasksScreen } from "./screens/tasks-screen"
 import { FinanceScreen } from "./screens/finance-screen"
 import { NutritionScreen } from "./screens/nutrition-screen"
 import { ExerciseScreen } from "./screens/exercise-screen"
@@ -46,6 +47,7 @@ export function AppShell() {
           {/* Scrollable content */}
           <div className="sf-scroll relative flex-1 overflow-y-auto">
             {view === "home" && <DashboardScreen onOpenExercise={() => setView("exercise")} />}
+            {view === "tasks" && <TasksScreen />}
             {view === "money" && <FinanceScreen />}
             {view === "fuel" && <NutritionScreen />}
             {view === "train" && <ExerciseScreen onBack={() => goTab("home")} />}
